@@ -100,7 +100,8 @@ export const getTask = async (req, res) => {
       order: [[sort, order.toUpperCase()]],
       limit: parseInt(limit),
       offset,
-      include: [{ model: User, attributes: ["id", "name", "email"] }], // optional: show assigned user details
+      // Use defined association alias and only existing attributes
+      include: [{ model: User, as: "assignee", attributes: ["id", "email"] }],
     });
 
     res.json({
