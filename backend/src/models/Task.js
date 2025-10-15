@@ -42,7 +42,8 @@ const Task = sequelize.define("Task", {
   },
 
   
-  documents: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true }, // store filenames/paths
+  // Use JSON for portability across dialects (ARRAY not supported in SQLite)
+  documents: { type: DataTypes.JSON, allowNull: true },
 });
 
 export default Task;
