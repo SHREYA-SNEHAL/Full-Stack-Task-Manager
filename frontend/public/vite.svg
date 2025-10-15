@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 404">
+  <defs>
+    <linearGradient id="vite-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#41D1FF" />
+      <stop offset="100%" stop-color="#BD34FE" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#vite-grad)"
+    d="M399 59L218 385c-7 12-24 12-31 0L10 59c-7-13 3-28 17-28h355c14 0 24 15 17 28z"
+  />
+  <path
+    fill="#fff"
+    d="M218 105c-22 0-41 14-49 33l-31 84c-2 6 2 12 8 12h35l-8 22c-3 8 3 17 12 17 7 0 12-4 14-9l40-110c2-5-2-9-7-9h-35l8-22c3-9-3-18-12-18z"
+  />
+</svg>

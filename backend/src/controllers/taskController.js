@@ -6,7 +6,7 @@ import User from "../models/User.js";
 export const createTask = async (req, res) => {
   try {
     const files = req.files ? req.files.map((f) => f.filename) : [];
-    const taskData = { ...req.body, attachedDocuments: files };
+    const taskData = { ...req.body, documents: files };
     const task = await Task.create(taskData);
     res.status(201).json(task);
   } catch (error) {
@@ -46,8 +46,8 @@ export const updateTask = async (req, res) => {
       return res.status(403).json({ message: "Not authorized" });
     }
 
-    const files = req.files ? req.files.map((f) => f.filename) : task.attachedDocuments;
-    await task.update({ ...req.body, attachedDocuments: files });
+    const files = req.files ? req.files.map((f) => f.filename) : task.documents;
+    await task.update({ ...req.body, documents: files });
     res.status(200).json(task);
   } catch (error) {
     res.status(500).json({ message: error.message });
