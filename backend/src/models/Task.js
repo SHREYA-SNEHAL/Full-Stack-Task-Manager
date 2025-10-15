@@ -41,12 +41,8 @@ const Task = sequelize.define("Task", {
       }, // could later be changed to a foreign key (user)
   },
 
-  // attachedDocuments: {
-  //   type: DataTypes.JSON, // store array of file URLs or metadata
-  //   allowNull: true,
-  // },
-
-  documents: { type: DataTypes.ARRAY(DataTypes.STRING) }, // store filenames/paths
+  // Store uploaded document filenames
+  documents: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true },
 });
 
 export default Task;
