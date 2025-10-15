@@ -7,7 +7,7 @@ import {
   updateTask,
   deleteTask,
 } from "../controllers/taskController.js";
-import { authenticate } from "../middlewares/auth.js";
+import { authenticate , isAdmin} from "../middlewares/auth.js";
 
 const router = express.Router();
 

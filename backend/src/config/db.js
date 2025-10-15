@@ -1,8 +1,20 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
 
-const sequelize = new Sequelize("task_manager_db", "root", "Shreya@19", {
-  host: "localhost",
-  dialect: "mysql", 
-});
+dotenv.config();
+
+const sequelize = new Sequelize(
+  process.env.NODE_ENV === "test"
+    ? process.env.TEST_DB_NAME:
+  process.env.DB_NAME, 
+  process.env.DB_USER, 
+  process.env.DB_PASSWORD, 
+  {
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+    port: process.env.DB_PORT,
+    logging: false,
+  }
+);
 
 export default sequelize;

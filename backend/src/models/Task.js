@@ -34,14 +34,19 @@ const Task = sequelize.define("Task", {
   },
 
   assignedTo: {
-    type: DataTypes.STRING,
-    allowNull: true, // could later be changed to a foreign key (user)
+    type: DataTypes.INTEGER,
+     references: {
+        model: "Users",
+        key: "id",
+      }, // could later be changed to a foreign key (user)
   },
 
-  attachedDocuments: {
-    type: DataTypes.JSON, // store array of file URLs or metadata
-    allowNull: true,
-  },
+  // attachedDocuments: {
+  //   type: DataTypes.JSON, // store array of file URLs or metadata
+  //   allowNull: true,
+  // },
+
+  documents: { type: DataTypes.ARRAY(DataTypes.STRING) }, // store filenames/paths
 });
 
 export default Task;
