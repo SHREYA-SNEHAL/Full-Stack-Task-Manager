@@ -42,7 +42,7 @@ const Task = sequelize.define("Task", {
   },
 
   
-  documents: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true }, // store filenames/paths
+  documents: { type: DataTypes.JSON, allowNull: true }, // store filenames/paths
 });
 
 export default Task;

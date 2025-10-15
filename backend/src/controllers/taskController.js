@@ -100,7 +100,7 @@ export const getTask = async (req, res) => {
       order: [[sort, order.toUpperCase()]],
       limit: parseInt(limit),
       offset,
-      include: [{ model: User, attributes: ["id", "name", "email"] }], // optional: show assigned user details
+      include: [{ model: User, as: "assignee", attributes: ["id", "email"] }],// optional: show assigned user details
     });
 
     res.json({

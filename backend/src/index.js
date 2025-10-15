@@ -29,16 +29,19 @@ User.hasMany(Task, { foreignKey: "assignedTo", as: "tasks" });
 
 
 // test database connection
-(async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("✅ Database connected successfully!");
-    await sequelize.sync({ alter: true });
-    console.log("✅ All models synced!");
-  } catch (error) {
-    console.error("❌ Database connection failed:", error);
-  }
-})();
+// Connect and sync only in non-test environments. Tests will control sync lifecycle.
+if (process.env.NODE_ENV !== "test") {
+  (async () => {
+    try {
+      await sequelize.authenticate();
+      console.log("✅ Database connected successfully!");
+      await sequelize.sync({ alter: true });
+      console.log("✅ All models synced!");
+    } catch (error) {
+      console.error("❌ Database connection failed:", error);
+    }
+  })();
+}
 
 
 
@@ -54,9 +57,9 @@ app.use("/uploads", express.static("uploads"));
 
 
 
-const PORT = process.env.PORT || 6000;
-app.listen(PORT,'0.0.0.0', () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 3000;
+
 if (process.env.NODE_ENV !== "test") {
-  app.listen(PORT, ()=> console.log("Server..."));
+  app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
 }
 export default app;

@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles --forceExit"
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --runInBand --detectOpenHandles --forceExit",
+    "test:coverage": "node --experimental-vm-modules --loader ./tests/setupEnv.js node_modules/jest/bin/jest.js --coverage"
+
   },
   "keywords": [],
   "author": "",
@@ -25,11 +27,16 @@
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@jest/globals": "^30.2.0",
+    "babel-jest": "^30.2.0",
     "cross-env": "^10.1.0",
     "eslint": "^9.37.0",
     "jest": "^30.2.0",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
+    "sqlite3": "^5.1.7",
     "supertest": "^7.1.4"
   }
 }
